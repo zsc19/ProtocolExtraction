@@ -1,0 +1,6 @@
+PyMuPDF
+easyocr
+openai #==0.28
+python-docx
+pandas
+openpyxl
