@@ -1,6 +1,20 @@
 PyMuPDF
 easyocr
-openai #==0.28
+openai==0.28
 python-docx
 pandas
+flask
 openpyxl
+# pypiwin32 # python -m pip install pypiwin32  ##win32com
+# nltk
+# chardet
+
+# OCR
+torch>=1.7.0
+torchvision>=0.8.1
+paddlepaddle
+paddleocr>=2.0.1
+opencv-python<=4.6.0.66
+opencv-contrib-python<=4.6.0.66
+numpy
+Pillow>=10.0.0
