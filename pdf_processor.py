@@ -22,7 +22,7 @@ class PDFParser:
     def __init__(self):
         self.model = "gpt-4-0125-preview"
         self.template = self.load_template()
-        self.prompt = """你是一个聪明而且有百年经验的命名实体识别（NER）识别器。你的任务是提取字段。你的回答务必使用完全的json格式！不要包含多的字段，你要提取的字段有:"""
+        self.prompt = """你是一个聪明而且有百年经验的命名实体识别（NER）识别器。你的任务是提取字段。你的回答务必使用完全的json格式，json里面请不要嵌套！不要包含多的字段，你要提取的字段有:"""
 
     def load_template(self):
         # load from file
@@ -145,7 +145,7 @@ class PDFParser:
                 # docx_content = self.download_and_read_docx(input_path)
                 file_path = "document.docx"  # 与之前下载时保存的文件路径一致
                 docx_content, tables = self.read_word_file(file_path)
-                print(docx_content)
+                # print(docx_content)
                 # 分词
                 # token75s = word_tokenize(docx_content)
                 #
@@ -156,6 +156,7 @@ class PDFParser:
                 # selected_text = ' '.join(first_100000_tokens)
 
                 prompt += f"\t你需要提取的文件内容为: {docx_content}\n"
+                print(prompt)
                 self.update_prompt(prompt)
 
             #
@@ -367,16 +368,16 @@ class PDFParser:
         finally:
             # 退出Word应用程序
             word.Quit()
-    def read_docx_to_string(self, file_path):
-        # 加载Word文档
-        doc = Document(file_path)
-        full_text = []
-
-        # 遍历文档中的段落并读取内容
-        for para in doc.paragraphs:
-            full_text.append(para.text)
-
-        # 将所有段落连接成一个字符串
-        return '\n'.join(full_text)
+    # def read_docx_to_string(self, file_path):
+    #     # 加载Word文档
+    #     doc = Document(file_path)
+    #     full_text = []
+    #
+    #     # 遍历文档中的段落并读取内容
+    #     for para in doc.paragraphs:
+    #         full_text.append(para.text)
+    #
+    #     # 将所有段落连接成一个字符串
+    #     return '\n'.join(full_text)
 
 
